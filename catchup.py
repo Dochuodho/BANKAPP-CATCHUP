@@ -26,6 +26,9 @@ class Bank_accounts:
         else:
             print("Insufficient balance")
 
+class SavingsAccount(Bank_accounts):
+    pass
+
 
 
 Bin = Bank_accounts(1222222, "Bin Amin", 0)
