@@ -7,13 +7,26 @@
  #decorator
 
 class Bank_accounts:
+    total_balance = 0
+
     def __init__(self, acc_number, acc_name, balance):
         self.acc_number = acc_number
         self.acc_name = acc_name
         self.balance = balance
+        Bank_accounts.total_balance += balance
 
     def deposit(self, amount):
         self.balance += amount
+        Bank_accounts.total_balance += amount
+
+    @classmethod
+
+    def total_bank_balance(cls):
+        print(cls.total_balance)
+
+    def deposit(self, amount):
+        self.balance += amount
+
 
     def check_balance(self):
         print(f"Hello {self.acc_name}, your current balance is {self.balance}")
@@ -27,7 +40,9 @@ class Bank_accounts:
             print("Insufficient balance")
 
 class SavingsAccount(Bank_accounts):
-    pass
+    def add_interest(self):
+        self.balance *= 1.03
+    
 
 
 
@@ -39,3 +54,6 @@ print(Bin.balance)
 print(Derrick.balance)
 print(Derrick.check_balance())
 print(Derrick.withdraw(2000))
+Bin.deposit(60000)
+
+print(Bank_accounts.total_balance)
